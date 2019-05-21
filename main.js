@@ -144,18 +144,22 @@ let interval = setInterval(move, 200);
 
 
 window.addEventListener('keydown', function (e) {
-  e.preventDefault();
+  
   if (steps == true) {
     if (e.keyCode == 37 && direction != 'right') {
+      e.preventDefault();
       direction = 'left';
       steps = false;
     } else if (e.keyCode == 38 && direction != 'down') {
+      e.preventDefault();
       direction = 'up';
       steps = false;
     } else if (e.keyCode == 39 && direction != 'left') {
+      e.preventDefault();
       direction = 'right';
       steps = false;
     } else if (e.keyCode == 40 && direction != 'up') {
+      e.preventDefault();
       direction = 'down';
       steps = false;
     }
