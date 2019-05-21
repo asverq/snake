@@ -119,7 +119,7 @@ const move = () => {
     snakeBody.push(document.querySelector(`[posX = "${a}"][posY = "${b}"]`));
     createMouse();
     score++;
-    input.value = `Вы слопали планет ${score}`;    
+    input.value = `Вы слопали планет: ${score}`;    
   }
 
   if (snakeBody[0].classList.contains('snakeBody')) {
