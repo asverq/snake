@@ -144,6 +144,7 @@ let interval = setInterval(move, 200);
 
 
 window.addEventListener('keydown', function (e) {
+  e.preventDefault();
   if (steps == true) {
     if (e.keyCode == 37 && direction != 'right') {
       direction = 'left';
