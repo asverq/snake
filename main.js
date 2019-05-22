@@ -1,3 +1,4 @@
+//create field
 let field = document.createElement('div');
 document.body.appendChild(field);
 field.classList.add('field');
@@ -8,8 +9,9 @@ for (let i = 1; i < 281; i++) {
   excel.classList.add('excel');
 }
 
-let excel = document.getElementsByClassName('excel');
 
+//fill the field with cells
+let excel = document.getElementsByClassName('excel');
 
 let x = 1;
 let y = 14;
@@ -24,6 +26,8 @@ for (let i = 0; i < excel.length; i++) {
   x++;
 }
 
+
+//generete snake
 const generateSnake = () => {
   let posX = Math.round(Math.random() * (20 - 3) + 3);
   let posY = Math.round(Math.random() * (14 - 1) + 1);
@@ -43,6 +47,7 @@ for (let i = 0; i < snakeBody.length; i++) {
 snakeBody[0].classList.add('head');
 
 
+//generate planet
 let mouse;
 
 const createMouse = () => {
@@ -71,9 +76,12 @@ const createMouse = () => {
 createMouse();
 
 
+//set snake direction
 let direction = 'right';
 let steps = false;
 
+
+//score area
 let input = document.createElement('input');
 document.body.appendChild(input);
 input.setAttribute('readonly', 'readonly');
@@ -88,6 +96,8 @@ display: block;
 let score = 0;
 input.value = `Вы слопали планет: ${score}`;
 
+
+//move function
 const move = () => {
   let snakeCoordinates = [snakeBody[0].getAttribute('posX'), snakeBody[0].getAttribute('posY')];
   snakeBody[0].classList.remove('head');
@@ -120,6 +130,7 @@ const move = () => {
     }
   }
 
+  //check eating planets
   if (snakeBody[0].getAttribute('posX') == mouse.getAttribute('posX') &&
     snakeBody[0].getAttribute('posY') == mouse.getAttribute('posY')) {
     mouse.classList.remove('mouse');
@@ -132,6 +143,7 @@ const move = () => {
     input.value = `Вы слопали планет: ${score}`;
   }
 
+  //check eating self
   if (snakeBody[0].classList.contains('snakeBody')) {
     setTimeout(() => {
       alert('Игра окончена!');
@@ -149,10 +161,10 @@ const move = () => {
   steps = true;
 }
 
-
 let interval = setInterval(move, 200);
 
 
+//event listener
 window.addEventListener('keydown', function (e) {
 
   if (steps == true) {
