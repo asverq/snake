@@ -19,14 +19,14 @@ body {
 .field:before {
   content: "";
   position: absolute;
-  top: -58%;
-  left: -48%;
-  width: 1900px;
+  top: -55%;
+  left: -25%;
+  width: 1500px;
   height: 1500px;
   z-index: -1;
-  background: url(img/space.jpg) center;
+  background: url(img/space3.jpg) center;
   background-size: cover;
-  animation: spin 345s linear 0s infinite;
+  animation: spin 400s linear 0s infinite;
 }
 
 .excel {
@@ -36,17 +36,17 @@ body {
 }
 
 .snakeBody {
-  background: url(img/earth2.png) center no-repeat;
+  background: url(img/earth3.png) center no-repeat;
   background-size: 80%;
   border-radius: 40%;
-  animation: spin-back 0.5s linear 0s infinite;
+  animation: spin-back 0.9s linear 0s infinite;
 }
 
 .head {
   background: url(img/klaksa2.png);
   background-size: cover;
   border-radius: 10%;
-  animation: spin 100s linear 0s infinite;
+  animation: spin 5s linear 0s infinite;
 }
 
 .mouse {

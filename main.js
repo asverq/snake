@@ -9,6 +9,8 @@ for (let i = 1; i < 281; i++) {
 }
 
 let excel = document.getElementsByClassName('excel');
+
+
 let x = 1;
 let y = 14;
 
@@ -69,9 +71,11 @@ let steps = false;
 
 let input = document.createElement('input');
 document.body.appendChild(input);
+input.setAttribute('readonly', 'readonly');
 input.style.cssText = `
 margin: auto;
 margin-top: 40px;
+padding-left: 10px;
 font-size: 30px;
 display: block;
 `;
