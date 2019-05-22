@@ -47,19 +47,24 @@ let mouse;
 
 const createMouse = () => {
   const generateMouse = () => {
-    let posX = Math.round(Math.random() * (10 - 3) + 3);
-    let posY = Math.round(Math.random() * (10 - 1) + 1);
+    let posX = Math.round(Math.random() * (20 - 3) + 3);
+    let posY = Math.round(Math.random() * (14 - 1) + 1);
     return [posX, posY];
   }
-  
+
   let mouseCoordinates = generateMouse();
   mouse = document.querySelector(`[posX = "${mouseCoordinates[0]}"][posY = "${mouseCoordinates[1]}"]`);
 
-  while (mouse.classList.contains('snakeBody')) {
+  while (mouse.classList.contains('snakeBody') ||
+    mouse.getAttribute('posX') == snakeBody[0].getAttribute('posX') &&
+    mouse.getAttribute('posY') == snakeBody[0].getAttribute('posY') ||
+    mouse.getAttribute('posX') + 1 == snakeBody[0].getAttribute('posX') &&
+    mouse.getAttribute('posY') + 1 == snakeBody[0].getAttribute('posY') ||
+    mouse.getAttribute('posX') - 1 == snakeBody[0].getAttribute('posX') &&
+    mouse.getAttribute('posY') - 1 == snakeBody[0].getAttribute('posY')) {
     mouseCoordinates = generateMouse();
     mouse = document.querySelector(`[posX = "${mouseCoordinates[0]}"][posY = "${mouseCoordinates[1]}"]`);
   }
-
   mouse.classList.add('mouse');
 }
 
@@ -116,14 +121,15 @@ const move = () => {
   }
 
   if (snakeBody[0].getAttribute('posX') == mouse.getAttribute('posX') &&
-                              snakeBody[0].getAttribute('posY') == mouse.getAttribute('posY')) {
+    snakeBody[0].getAttribute('posY') == mouse.getAttribute('posY')) {
+    mouse.classList.remove('mouse');
     mouse.classList.remove('mouse');
     let a = snakeBody[snakeBody.length - 1].getAttribute('posX');
     let b = snakeBody[snakeBody.length - 1].getAttribute('posY');
     snakeBody.push(document.querySelector(`[posX = "${a}"][posY = "${b}"]`));
     createMouse();
     score++;
-    input.value = `Вы слопали планет: ${score}`;    
+    input.value = `Вы слопали планет: ${score}`;
   }
 
   if (snakeBody[0].classList.contains('snakeBody')) {
@@ -140,7 +146,7 @@ const move = () => {
     snakeBody[i].classList.add('snakeBody');
   }
 
-  steps = true;  
+  steps = true;
 }
 
 
@@ -148,7 +154,7 @@ let interval = setInterval(move, 200);
 
 
 window.addEventListener('keydown', function (e) {
-  
+
   if (steps == true) {
     if (e.keyCode == 37 && direction != 'right') {
       e.preventDefault();
