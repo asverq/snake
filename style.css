@@ -24,9 +24,9 @@ body {
   width: 1500px;
   height: 1500px;
   z-index: -1;
-  background: url(img/space3.jpg) center;
+  background: url(img/space2.jpg) center;
   background-size: cover;
-  animation: spin 400s linear 0s infinite;
+  animation: spin-back 700s linear 0s infinite;
 }
 
 .excel {
